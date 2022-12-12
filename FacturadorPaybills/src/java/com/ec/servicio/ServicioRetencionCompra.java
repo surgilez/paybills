@@ -226,7 +226,11 @@ public class ServicioRetencionCompra {
         return retencionCompra;
     }
 
+<<<<<<< HEAD
    public List<RetencionCompra> findByFecha(Date inicio, Date fin, Tipoambiente codTipoambiente) {
+=======
+    public List<RetencionCompra> findByFecha(Date inicio, Date fin, Tipoambiente codTipoambiente) {
+>>>>>>> fa843b9754da8b44d406ec620103fe7702fb2250
 
         List<RetencionCompra> listaRetencionCompras = new ArrayList<RetencionCompra>();
         try {
@@ -289,5 +293,4 @@ public class ServicioRetencionCompra {
 
         return listaRetencionCompras;
     }
-
 }

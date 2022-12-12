@@ -111,7 +111,6 @@ public class ListaRetenciones {
     private void buscarPorSecuencialRetencion() {
         listaRetencionCompras = servicioRetencionCompra.findBySecuencialRet(buscarSecuencial, amb);
     }
-
     @Command
     @NotifyChange({"listaRetencionCompras", "inicio", "fin"})
     public void buscarForFechas() {

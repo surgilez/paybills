@@ -299,7 +299,11 @@
                                     <listitem  onOK="@command('agregarItemLista',valor=each.idProducto)">
                                         <listcell  style="font-size:11px;background-color:#d6eefd" zclass = "mycss-listcell" 
                                                    onDoubleClick="@command('agregarItemLista',valor=each.idProducto)">
+<<<<<<< HEAD
                                             <textbox value="@bind(each.idProducto.prodCodigo)"   
+=======
+                                            <textbox value="@bind(each.idProducto.prodCodigo)"    
+>>>>>>> fa843b9754da8b44d406ec620103fe7702fb2250
                                                      class="form-control form-control-sm"
                                                      style="font-size:11px;background-color:#d6eefd"
                                                      readonly="true"
