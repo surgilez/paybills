@@ -77,7 +77,7 @@ public class ServicioFactura {
                 detalleFactura.setDetSubtotaldescuentoporcantidad(item.getDetSubtotaldescuentoporcantidad());
                 detalleFactura.setDetCodTipoVenta(item.getCodTipoVenta());
                 detalleFactura.setDetCodIva("2");
-                detalleFactura.setDetCodPorcentaje(item.getProducto().getProdGrabaIva() ? "2" : "0");
+               detalleFactura.setDetCodPorcentaje(item.getProducto().getProdCodigoIva().toString());
                 detalleFactura.setDetTarifa(item.getProducto().getProdIva());
                 detalleFactura.setDetValorIce(item.getValorIce());
 
@@ -1172,5 +1172,34 @@ public class ServicioFactura {
         }
 
         return listaFacturas;
+    }
+    
+      public Factura findTipoambienteNumFactura(Tipoambiente codTipoambiente, Integer numero) {
+
+        List<Factura> listaFacturas = new ArrayList<Factura>();
+        Factura facturas = new Factura();
+        try {
+            //Connection connection = em.unwrap(Connection.class);
+            em = HelperPersistencia.getEMF();
+            em.getTransaction().begin();
+            Query query = em.createQuery("SELECT f FROM Factura f WHERE f.facTipo='FACT' AND f.facNumero IS NOT NULL AND f.cod_tipoambiente=:codTipoambiente AND f.facNumero=:numero ORDER BY f.facNumero DESC");
+            query.setParameter("codTipoambiente", codTipoambiente);
+            query.setParameter("numero", numero);
+
+//           query.setParameter("codigoUsuario", factura);
+            listaFacturas = (List<Factura>) query.getResultList();
+            if (listaFacturas.size() > 0) {
+                facturas = listaFacturas.get(0);
+            } else {
+                facturas = null;
+            }
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println("Error en lsa consulta factura " + e.getMessage());
+        } finally {
+            em.close();
+        }
+
+        return facturas;
     }
 }
