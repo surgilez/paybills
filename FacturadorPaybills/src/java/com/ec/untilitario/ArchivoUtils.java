@@ -892,21 +892,16 @@ public class ArchivoUtils {
 //                        .build();
             System.out.println("EEEE");
 
-            try {
-                OkHttpClient client = new OkHttpClient().newBuilder()
-                        .build();
-                MediaType mediaType = MediaType.parse("application/json;charset=utf-8");
-                RequestBody body = RequestBody.create(mediaType, "{\r\n  \"api_key\": \"689652829f001d7d\",\r\n  \"api_secret\": \"d7f286ac80dd40ac4df7db7e6e7186d5467985b6\"\r\n}");
-                Request request = new Request.Builder()
-                        .url("https://emea.api.hvca.globalsign.com:8443/v2/login")
-                        .method("POST", body)
-                        .addHeader("Content-Type", "application/json;charset=utf-8")
-                        .build();
-                Response response = client.newCall(request).execute();
-
-            } catch (IOException e) {
-                System.out.println("ERROR IOException " + e.getMessage());
-            }
+            OkHttpClient client = new OkHttpClient().newBuilder()
+                    .build();
+            MediaType mediaType = MediaType.parse("application/json;charset=utf-8");
+            RequestBody body = RequestBody.create(mediaType, "{\r\n  \"api_key\": \"689652829f001d7d\",\r\n  \"api_secret\": \"d7f286ac80dd40ac4df7db7e6e7186d5467985b6\"\r\n}");
+            Request request = new Request.Builder()
+                    .url("https://emea.api.hvca.globalsign.com:8443/v2/login")
+                    .method("POST", body)
+                    .addHeader("Content-Type", "application/json;charset=utf-8")
+                    .build();
+            Response response = client.newCall(request).execute();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
